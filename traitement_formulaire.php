@@ -3,9 +3,9 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "rendezvous";
+$dbname = "planning";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname, 3307);
 
 // Vérifier la connexion à la base de données
 if ($conn->connect_error) {
@@ -17,7 +17,7 @@ $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
 $numero_telephone = $_POST['numero_telephone'];
 $date_rendezvous = $_POST['date_rendezvous'];
-$email=$_POST['email'];
+$email = $_POST['email'];
 
 
 // 1ère instruction d'insertion dans la table utilisateurs
@@ -28,7 +28,7 @@ if ($conn->query($sql1) === TRUE) {
     $id_utilisateur = $conn->insert_id;
 
     // 2ème instruction d'insertion dans la table rendez_vous
-    $sql2 = "INSERT INTO rendezvouspatients (ID_Utilisateur, DateRendezVous	) VALUES ('$id_utilisateur', '$date_rendezvous')";
+    $sql2 = "INSERT INTO rendezvous (ID_Utilisateur, DateRendezVous	) VALUES ('$id_utilisateur', '$date_rendezvous')";
 
     if ($conn->query($sql2) === TRUE) {
         echo "Rendez-vous ajouté avec succès!";
@@ -41,4 +41,3 @@ if ($conn->query($sql1) === TRUE) {
 
 // Fermer la connexion à la base de données
 $conn->close();
-?>

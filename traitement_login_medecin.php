@@ -4,9 +4,9 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "rendezvous";
+$dbname = "planning";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname, 3307);
 
 
 // Récupérer les données du formulaire
@@ -29,4 +29,3 @@ if ($result->num_rows > 0) {
 
 // Fermer la connexion à la base de données
 $conn->close();
-?>

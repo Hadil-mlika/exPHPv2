@@ -8,16 +8,16 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "rendezvous";
+$dbname = "planning";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname,3307);
 
 // Vérifier la connexion à la base de données
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 // Récupérer la liste des rendez-vous depuis la base de données
-$sqlRendezVous = "SELECT id_rendezvous, daterendezvous FROM rendezvouspatients";
+$sqlRendezVous = "SELECT id_rendezvous, daterendezvous FROM rendezvous";
 $resultRendezVous = $conn->query($sqlRendezVous);
 ?>
 
@@ -77,8 +77,8 @@ $resultRendezVous = $conn->query($sqlRendezVous);
             echo "<li>";
             echo "<span class='date'>ID: {$row['id_rendezvous']} - Date: {$row['daterendezvous']} <br> <br></span>";
             echo "<select name='decision_{$row['id_rendezvous']}'>";
-            echo "<option value='accepter'>Accepter</option>";
-            echo "<option value='refuser'>Refuser</option>";
+            echo "<option value='accepter'>Accepté</option>";
+            echo "<option value='refuser'>Refusé</option>";
             echo "</select>";
             echo "</li>";
         }
